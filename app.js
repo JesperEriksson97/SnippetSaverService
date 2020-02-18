@@ -20,9 +20,12 @@ app.set('view engine', 'hbs')
 app.set('views', join(__dirname, 'views'))
 
 app.use('/', require('./routes/homeRouter')) // If a '/' get requests get in let homeRouter deal with it.
-// app.use('*', (req, res, next) => next(createError(404)))
 app.use('/login', require('./routes/loginRouter'))
 app.use('/register', require('./routes/registerRouter'))
+
+app.use('*', (req, res, next) => {
+  res.send('Oops! 404: Cant find the requested resource... Sorry')
+})
 
 app.listen(8000, () => {
   console.log('App is listening on port 8000') // console.log when the server starts.

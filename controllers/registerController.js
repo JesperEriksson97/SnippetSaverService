@@ -10,8 +10,8 @@ const registerController = {}
  */
 registerController.register = (req, res) => { res.render('register/register') }
 registerController.postRegister = (req, res) => {
-    console.log(req.body.Username)
-    console.log(req.body.Password)
+  console.log(req.body.Username)
+  console.log(req.body.Password)
 }
 
 // Exports.
