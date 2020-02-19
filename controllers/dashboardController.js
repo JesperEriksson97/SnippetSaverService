@@ -1,6 +1,6 @@
 'use strict'
 
-const registerController = {}
+const dashboardController = {}
 
 /**
  * Displays a start page.
@@ -10,14 +10,13 @@ const registerController = {}
  */
 
 // GET
-registerController.register = (req, res) => { res.render('register/register') }
+dashboardController.dashboard = (req, res) => { res.render('register/register') }
 
 // POST
-registerController.postRegister = function (req, res) {
-  console.log('We pressed REGISTER')
+dashboardController.postDashboard = function (req, res) {
   console.log(req.body.Username)
   console.log(req.body.Password)
 }
 
 // Exports.
-module.exports = registerController
+module.exports = dashboardController

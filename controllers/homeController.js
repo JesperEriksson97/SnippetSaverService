@@ -8,7 +8,10 @@ const homeController = {}
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
-homeController.index = (req, res) => { res.render('home/index') }
+homeController.index = (req, res) => {
+  console.log(req.session)
+  res.render('home/index')
+}
 
 // Exports.
 module.exports = homeController
