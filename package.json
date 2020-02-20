@@ -16,6 +16,7 @@
   "author": "Jesper Eriksson",
   "license": "MIT",
   "devDependencies": {
+    "@editorjs/editorjs": "^2.16.1",
     "@lnu/eslint-config": "^1.0.6",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.0",
@@ -28,6 +29,7 @@
     "extends": "@lnu"
   },
   "dependencies": {
+    "ace-builds": "^1.4.8",
     "axios": "^0.19.2",
     "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",

@@ -1,9 +1,4 @@
-html {
-    position: relative;
-    min-height: 100%;
-  }
-  body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    font-family: sans-serif;
-  }
+textarea {
+  outline: none;
+  resize: none;
+}

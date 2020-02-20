@@ -18,7 +18,6 @@ registerController.register = (req, res) => { res.render('register/register') }
 
 // POST
 registerController.postRegister = function (req, res) {
-
   const { username, password } = req.body
   const errors = []
 
@@ -60,7 +59,7 @@ registerController.postRegister = function (req, res) {
           console.log(newUser)
 
           // HASH password
-          bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.genSalt(10, (err, salt) => { // Using salt method in encryption
             if (err) throw err
             bcrypt.hash(newUser.password, salt, (err, hash) => {
               if (err) throw err
