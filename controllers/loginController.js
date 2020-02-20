@@ -11,11 +11,11 @@ const loginController = {}
 loginController.login = (req, res) => { res.render('login/login') }
 
 loginController.postLogin = function (req, res) {
-    const { username, password } = req.body
+  const { username, password } = req.body
 
-    if (username && password) {
-        // Check in database if username and password are registered.
-    }
+  if (username && password) {
+    // Check in database if username and password are registered.
+  }
 }
 
 // Exports.

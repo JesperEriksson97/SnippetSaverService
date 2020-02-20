@@ -5,8 +5,10 @@ const router = express.Router()
 
 const registerController = require('../controllers/registerController')
 
-// GET /
+// GET
 router.get('/', registerController.register)
+
+// POST
 router.post('/', registerController.postRegister)
 
 // Exports.
