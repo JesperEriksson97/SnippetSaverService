@@ -12,6 +12,10 @@ const dashboardController = {}
 // GET
 dashboardController.dashboard = (req, res) => { res.render('dashboard/dashboard') }
 
+dashboardController.mySnippets = (req, res) => {
+  res.render('dashboard/mySnippets')
+}
+
 // POST
 dashboardController.postDashboard = function (req, res) {
   console.log(req.body.username)
