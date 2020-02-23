@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({
 
 const TWO_HOURS = 1000 * 60 * 60 * 2
 
-// envs
+// envs Move to .env file
 const {
   PORT = 8000,
   NODE_ENV = 'development',
@@ -58,23 +58,7 @@ app.use((req, res, next) => {
   next()
 })
 
-// Function to redirect to user to the login page if its trying to access unathorized data.
-const redirectLogin = (req, res, next) => { // If the user is not logged in, redirect to login page.
-  if (!req.session.userId) {
-    res.redirect('/login')
-  } else {
-    next()
-  }
-}
 
-// Function to redirect to user to dashboard if the user is already logged in.
-const redirectDashboard = (req, res, next) => { // If the user have a session and tries to log in again, just redirect to the dashboard.
-  if (req.session.userId) {
-    res.redirect('/dashboard')
-  } else {
-    next()
-  }
-}
 
 // app.use(session(sessionOptions))
 app.use(logger('dev')) // Logs requests to the page in terminal
@@ -94,9 +78,9 @@ app.set('view engine', 'hbs')
 app.set('views', join(__dirname, 'views'))
 
 app.use('/', require('./routes/homeRouter')) // If a '/' get requests get in let homeRouter deal with it.
-app.use('/login', redirectDashboard, require('./routes/loginRouter'))
+app.use('/login', require('./routes/loginRouter'))
 app.use('/register', require('./routes/registerRouter'))
-app.use('/dashboard', redirectLogin, require('./routes/dashboardRouter'))
+app.use('/dashboard', require('./routes/dashboardRouter'))
 
 app.use('*', (req, res, next) => {
   res.send('Oops! 404: Cant find the requested resource... Sorry')

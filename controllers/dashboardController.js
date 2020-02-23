@@ -10,12 +10,12 @@ const dashboardController = {}
  */
 
 // GET
-dashboardController.dashboard = (req, res) => { res.render('register/register') }
+dashboardController.dashboard = (req, res) => { res.render('dashboard/dashboard') }
 
 // POST
 dashboardController.postDashboard = function (req, res) {
-  console.log(req.body.Username)
-  console.log(req.body.Password)
+  console.log(req.body.username)
+  console.log(req.body.password)
 }
 
 // Exports.
