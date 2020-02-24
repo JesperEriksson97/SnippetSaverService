@@ -9,18 +9,15 @@ const dashboardController = {}
  * @param {object} res - Express response object.
  */
 
+const Snippet = require('../models/User')
+const snippetController = require('./snippetController')
+
 // GET
 dashboardController.dashboard = (req, res) => { res.render('dashboard/dashboard') }
 
-dashboardController.mySnippets = (req, res) => {
-  res.render('dashboard/mySnippets')
+// Maybe move out to a SnippetController
+dashboardController.postSnippet = function (req, res) {
+  // Here we should post a snippet
 }
-
-// POST
-dashboardController.postDashboard = function (req, res) {
-  console.log(req.body.username)
-  console.log(req.body.password)
-}
-
 // Exports.
 module.exports = dashboardController
