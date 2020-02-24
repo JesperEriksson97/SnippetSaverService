@@ -1,3 +1,25 @@
 <h1>My snippets!</h1>
 
 <a href="/dashboard/createSnippet">Create New Snippet</a>
+<br>
+<hr>
+
+
+{{#each mySnippets}}
+
+<div style="max-width: 500px; padding: 20px; border: 9px inset #1C6EA4;
+border-radius: 23px;">
+    <h3>{{this.label}}</h3>
+    <h5> Author: {{this.username}}</h5>
+    <textarea name="snippet" rows="15" cols="60" readonly="true" outline="none">{{this.value}}</textarea>
+    <form method="GET" action="/dashboard/editSnippet/{{this._id}}">
+        <button>Edit</button>
+    </form>
+    <form method="POST" action="/dashboard/deleteSnippet/{{this._id}}?_method=DELETE">
+        <button>Delete</button>
+    </form>
+    
+</div>
+{{/each}}
+
+{{> backButton}}

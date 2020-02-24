@@ -9,12 +9,13 @@ const SnippetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  value: {
+  label: {
     type: String,
     required: true
   },
-  date: {
-    type: Date
+  value: {
+    type: String,
+    required: true
   }
 })
 

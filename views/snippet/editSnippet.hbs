@@ -1,0 +1,18 @@
+{{#each snippetToEdit}}
+    <h1>Edit Snippet</h1>
+    {{> error}}
+    <form action="/dashboard/sendUpdatedSnippet/{{this._id}}" method="POST">
+        <textarea name="snippet" rows="20" cols="100"></textarea>
+
+        <br>
+
+        <label name="snippetName">Name Of Snippet: </label>
+        <input type="text" name="snippetName">
+
+        <br>
+
+        <input type="submit" value="Update">
+
+    </form>
+{{/each}}
+{{> backButton}}

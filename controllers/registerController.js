@@ -62,7 +62,6 @@ registerController.postRegister = function (req, res) {
             // Save user
             newUser.save()
               .then(user => {
-                console.log(req.flash.success_msg)
                 req.flash('success_msg', 'You are now registered and can log in')
                 res.redirect('/')
               })

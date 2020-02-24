@@ -5,6 +5,16 @@
 <button><a href="/login">Login</a></button>
 <br>
 <hr>
-<h2>Recent Snippets</h2>
+<h2>Snippets Made By Users</h2>
+<p>Register and Log in to make your own!</p>
+
+{{#each homeSnippets}}
+<div style="max-width: 500px; padding: 20px; border: 9px inset #1C6EA4;
+border-radius: 23px;">
+    <h3>{{this.label}}</h3>
+    <h5> Author: {{this.username}}</h5>
+    <textarea name="snippet" rows="15" cols="60" readonly="true" outline="none">{{this.value}}</textarea>
+</div>
+{{/each}}
 
 

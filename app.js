@@ -7,6 +7,7 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const flash = require('connect-flash')
+const method_override = require('method-override')
 
 // DB Config
 const db = require('./configs/mongoKeys').mongoURI
@@ -18,6 +19,8 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 const app = express()
 
+// Middleware to handle DELETE method in forms.
+app.use(method_override('_method')) // lets us override form methods
 
 // Middleware to handle req.body
 app.use(bodyParser.urlencoded({ 
@@ -97,6 +100,7 @@ app.use('/', require('./routes/homeRouter')) // If a '/' get requests get in let
 app.use('/login', redirectDashboard, require('./routes/loginRouter'))
 app.use('/register', redirectDashboard, require('./routes/registerRouter'))
 app.use('/dashboard', redirectLogin, require('./routes/dashboardRouter'))
+app.use('/logout', require('./routes/logoutRouter'))
  // app.use('/logout', redirectDashboard, require('./routes/logoutRouter')) Logout routing not yet handled.
 // 
 app.use('*', (req, res, next) => {
