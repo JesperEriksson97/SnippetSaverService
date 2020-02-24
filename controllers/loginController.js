@@ -35,11 +35,11 @@ loginController.postLogin = async function (req, res, next) {
     res.status(400)
   }
   try {
-    console.log(userData.users)
     if (await bcrypt.compare(req.body.password, user.password)) {
-      console.log(req.body.password)
-      console.log(user.password)
-      console.log(' WE DO GET HERE ????')
+      console.log(user.id)
+      req.session.userId = user.id
+      req.session.user = user.username
+      console.log(req.session.userId)
       res.redirect('/dashboard')
     }
     req.flash('error_msg', 'Incorrect Password')

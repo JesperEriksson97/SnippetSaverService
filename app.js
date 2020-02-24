@@ -18,7 +18,9 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 const app = express()
 
-app.use(bodyParser.urlencoded({
+
+// Middleware to handle req.body
+app.use(bodyParser.urlencoded({ 
   extended: true
 }))
 
@@ -27,6 +29,7 @@ const TWO_HOURS = 1000 * 60 * 60 * 2
 // envs Move to .env file
 const {
   PORT = 8000,
+  // NODE_ENV = 'production',
   NODE_ENV = 'development',
   SESS_NAME = 'test',
   SESS_SECRET = 'secret',
@@ -44,7 +47,7 @@ app.use(session({
   cookie: {
     maxAge: SESS_LIFETIME,
     sameSite: true,
-    secure: IN_PROD // should be set to secure when in production
+    secure: IN_PROD // Ok to be false when in developlemt, will be true when in production
   }
 }))
 
@@ -58,6 +61,19 @@ app.use((req, res, next) => {
   next()
 })
 
+// Authentication Middleware functions
+const redirectLogin = (req, res, next) => {
+  if (!req.session.userId) {
+    req.flash('error_msg', 'You need to be logged in to get the requested resource')
+    res.redirect('/login')
+  } else { next() }
+}
+
+const redirectDashboard = (req, res, next) => {
+  if (req.session.userId) {
+    res.redirect('/dashboard')
+  } else { next() }
+}
 
 
 // app.use(session(sessionOptions))
@@ -78,10 +94,11 @@ app.set('view engine', 'hbs')
 app.set('views', join(__dirname, 'views'))
 
 app.use('/', require('./routes/homeRouter')) // If a '/' get requests get in let homeRouter deal with it.
-app.use('/login', require('./routes/loginRouter'))
-app.use('/register', require('./routes/registerRouter'))
-app.use('/dashboard', require('./routes/dashboardRouter'))
-
+app.use('/login', redirectDashboard, require('./routes/loginRouter'))
+app.use('/register', redirectDashboard, require('./routes/registerRouter'))
+app.use('/dashboard', redirectLogin, require('./routes/dashboardRouter'))
+ // app.use('/logout', redirectDashboard, require('./routes/logoutRouter')) Logout routing not yet handled.
+// 
 app.use('*', (req, res, next) => {
   res.send('Oops! 404: Cant find the requested resource... Sorry')
 })

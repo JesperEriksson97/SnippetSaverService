@@ -15,6 +15,10 @@ router.get('/createSnippet', snippetController.createSnippet) // Renders the hbs
 
 router.get('/allSnippets', snippetController.allSnippets) // Generates ALL snippets in databse 
 
+// POST /
+
+router.post('/createSnippet', snippetController.postSnippet)
+
 
 // Exports.
 module.exports = router

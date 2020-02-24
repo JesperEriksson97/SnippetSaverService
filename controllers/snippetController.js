@@ -1,6 +1,7 @@
 'use strict'
 
 const snippetController = {}
+const Snippet = require('../models/Snippet')
 
 // GETS
 
@@ -21,6 +22,15 @@ snippetController.allSnippets = (req, res) => {
 
 snippetController.postSnippet = (req, res) => {
   // Post the snippet to MongoDB
+  const { snippet, snippetName } = req.body
+
+  if (!snippetName || !snippet) {
+    req.flash('error_msg', 'Please fill in all fields.')
+    res.redirect(302, '/dashboard/createSnippet')
+  }
+
+  // HERE WE WANT TO SEND THE SNIPPET TO A DATABASE
+  console.log(req.session.userId)
 }
 
 

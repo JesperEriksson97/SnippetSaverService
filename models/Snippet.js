@@ -5,12 +5,16 @@ const SnippetSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  userId: {
+    type: String,
+    required: true
+  },
   value: {
     type: String,
     required: true
   },
   date: {
-    type: Date()
+    type: Date
   }
 })
 
