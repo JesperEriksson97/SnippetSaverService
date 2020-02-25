@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
     "lint": "npx eslint . || exit 0",
     "lint:fix": "npx eslint . --fix || exit 0",
     "devStart": "nodemon app.js"
@@ -29,26 +29,18 @@
     "extends": "@lnu"
   },
   "dependencies": {
-    "ace-builds": "^1.4.8",
-    "axios": "^0.19.2",
     "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",
-    "cheerio": "^1.0.0-rc.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-hbs": "^2.3.0",
     "express-session": "^1.17.0",
-    "fetch": "^1.1.0",
-    "jsdom": "^16.1.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.1",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.2",
-    "puppeteer": "^2.1.1",
-    "request": "^2.88.0"
+    "nodemon": "^2.0.2"
   },
   "nodemonConfig": {
     "ext": "js,json,hbs,html,css"
