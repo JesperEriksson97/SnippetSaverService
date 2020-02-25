@@ -4,16 +4,22 @@ const loginController = {}
 const User = require('../models/User')
 
 /**
- * Displays a start page.
+ * Displays a login page.
  *
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
  */
 loginController.login = (req, res) => { res.render('login/login') }
 
+/**
+ * A function that handles login. Is Async and checks with mongoDB if the password / uername
+ * matches with any in mongoDB.
+ *
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ * @param {object} next - Function to proceed with the natural flow.
+ */
 loginController.postLogin = async function (req, res, next) {
-  const { username, password } = req.body
-
   let userData
   try {
     userData = {

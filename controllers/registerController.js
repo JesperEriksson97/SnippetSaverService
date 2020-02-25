@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const registerController = {}
 
 /**
- * Displays a start page.
+ * Displays a register page.
  *
  * @param {object} req - Express request object.
  * @param {object} res - Express response object.
@@ -15,6 +15,13 @@ const User = require('../models/User')
 
 // GET
 registerController.register = (req, res) => { res.render('register/register') }
+
+/**
+ * Handles registreing and saving information to mongoDB.
+ *
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ */
 
 // POST
 registerController.postRegister = function (req, res) {
@@ -70,7 +77,6 @@ registerController.postRegister = function (req, res) {
         })
       }
     })
-
 }
 
 // Exports.
